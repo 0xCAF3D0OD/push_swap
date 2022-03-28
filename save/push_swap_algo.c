@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_algo.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:06:51 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/27 15:37:49 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/25 17:35:27 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,8 @@ int put_argv_in_tab(char *global, int *tab, int j)
 		// printf("rett: %d\n", tab[j]);
 		i++;
 	}
-	i = 0;
-	while (tab_tmp[i])
-		(free(tab_tmp[i]), tab_tmp[i] = NULL, i++);
+	while (tab_tmp[y])
+		(free(tab_tmp[y]), tab_tmp[y] = NULL, y++);
 	free(tab_tmp);
 	tab_tmp = NULL;
 	return (i);
@@ -133,9 +132,7 @@ void	one_arg(t_data *global, int y)
 	}
 	i = -1;
 	while (++i < y)
-		global->tab[0][i] = tab[i];
-	if (tab != 0)
-		free(tab), tab = NULL;
+		printf("tab: %d\n", tab[i]);
 }
 
 // void	three_args(t_data *global, int y)
@@ -196,88 +193,81 @@ void	one_arg(t_data *global, int y)
 // 		printf("pa\n"), manage_pa(global);
 // }
 
-int	check_afer_bigger(t_data *global, int len)
-{
-	int i;
-	int j;
+// int	check_afer_bigger(t_data *global, int len)
+// {
+// 	int i;
+// 	int j;
 
-	i = 0;
-	j = 0;
-	while (j < len - 1)
-	{
-		if (global->tab[0][j] > global->tab[0][j + 1])
-			i++;
-		j++;
-	}
-	if (i != 0)
-		return (1);
-	else
-		return (0);
-	return (0);
-}
+// 	i = 0;
+// 	j = 0;
+// 	while (j < len)
+// 	{
+// 		// printf("global: 	%d\n", global->tab[0][j]);
+// 		if (global->tab[0][j] > global->tab[0][j + 1])
+// 			i++;
+// 		j++;
+// 	}
+// 	// printf("i = %d\n", i);
+// 	if (i != 0)
+// 		return (1);
+// 	else
+// 		return (0);
+// 	return (0);
+// }
 
-void	quick_sorte(t_data *global, int x)
-{
-	int i;
-	int len;
-	int bit;
+// void	quick_sorte(t_data *global, int x)
+// {
+// 	int i;
+// 	int len;
+// 	int bit;
+// 	// int temp;
 	
-	len = global->len_a;
-	bit = 0;
-	printf("quick_sorte: 1\n");
-	i = check_afer_bigger(global, len);
-	printf("quick_sorte: 2\n");
-	while (i == 1)
-	{
-		printf("quick_sorte: 2.1\n");
-		while (x < len)
-		{
-			check_fct(global);
-			printf ("lenb: %d\n", global->len_b);
-			printf ("lena: %d\n", global->len_a);
-			printf("quick_sorte: 2.1.1\n");
-			// temp = global->tab[0][0];
-			if ((global->tab[0][0] >> bit) & 1)
-				(manage_pb(global), printf("pb\n"));
-			else
-				(manage_ra(global), printf("ra\n"));
-			printf("quick_sorte: 2.1.2\n");
-			x++;
-		}
-		printf("quick_sorte: 2.2\n");
-		bit++;
-		printf ("lenb: %d\n", global->len_b);
-		printf ("lena: %d\n", global->len_a);
-		while (global->len_b > 0)
-			(manage_pa(global), printf("pa\n"), check_fct(global));
-		printf("quick_sorte: 2.3\n");
-		i = check_afer_bigger(global, len);
-		exit(1);
-	}
-	printf("quick_sorte: 3\n");	
-	
-}
+// 	len = global->len_a;
+// 	bit = 0;
+// 	i = check_afer_bigger(global, len);
+// 	while (i == 1)
+// 	{
+// 		// check_fct(global);
+// 		while (x < len)
+// 		{
+// 			// temp = global->tab[0][0];
+// 			if ((global->tab[0][0] >> bit) & 1)
+// 				(manage_pb(global), printf("pb\n"));
+// 			else
+// 				(manage_ra(global), printf("ra\n"));
+// 			x++;
+// 		}
+// 		bit++;
+// 		while (global->len_b > 0)
+// 			(manage_pa(global), printf("pa\n"));
+// 		i = check_afer_bigger(global, len);
+// 	}	
+// }
 
 void	manage_algo(char **argv, t_data *global)
 {
 	int x;
 	int y;
+	int i;
 	int ordre;
 
+	i = 1;
 	x = 0;
 	y = 0;
-	global->len_a = check_len_a(global, x, y);
-	global->len_b = 0;
+	
 	manage_info_tab(argv, global);
-	one_arg(global, y);
 	check_similaire(global, y);
+	global->len_a = check_len_a(global, x, y);
+	global->len_b = check_len_b(global, x, y);
+	one_arg(global, y), exit(1);
 	ordre = ordre_checker(global);
 	if (ordre == 1)
 		(printf("c'est dans l'ordre!\n"), exit(1));
+	// check_tab(argv, global, i);
 	// if (global->argc < 5)
 	// 	three_args(global, y);
 	// if (global->argc == 6)
 	// 	five_args(global, y, x);
-	printf("quick_sorte\n");
-	quick_sorte(global, x);
+	// else if (global->argc > 6)
+	// 	quick_sorte(global, x);
 }

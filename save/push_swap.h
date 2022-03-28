@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 16:02:13 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/26 18:54:20 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/25 17:08:06 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	check_len_argv(t_data *global);
 int		ordre_checker(t_data *global);
 void	manage_cmd(char **argv, t_data *global);
 void	manage_info_tab(char **argv, t_data *global);
-void	manage_len_tab(t_data *global, int y);
-void	check_argv(char **argv, int i);
+void	manage_len_tab(t_data *global, int x, int y);
+void	check_tab(char **argv, t_data *global, int i);
 void	check_similaire(t_data *global, int y);
 void	manage_free(t_data *global);
 void	check_fct(t_data *global);
@@ -64,5 +64,6 @@ void	manage_algo(char **argv, t_data *global);
 int		check_min(t_data *global, int x, int y);
 int 	check_max(t_data *global, int x, int y);
 int		check_min_max_b(t_data *global, int x, int y);
+void	nbr(void);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valeurs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:17:54 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/26 20:24:28 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/25 14:57:36 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int check_len_a(t_data *global, int x, int y)
 	while(y == 0)
 	{
 		x = 0;
-		while (x < global->len_max)
+		while (x < global->argc - 1 && y == 0)
 			x++;
 		y++;
 	}
@@ -27,10 +27,14 @@ int check_len_a(t_data *global, int x, int y)
 
 int check_len_b(t_data *global, int x, int y)
 {	
-	x = 0;
-	while (x < global->len_max)
-		x++;
-	printf ("b = %d\n", x);
+	y = 0;
+	while(y == 1)
+	{
+		x = 0;
+		while (x < global->argc - 1 && y == 0)
+			x++;
+		y++;
+	}
 	return (x);
 }
 
@@ -38,7 +42,7 @@ int	check_min(t_data *global, int x, int y)
 {
 	int temp;
 	
-	temp = INT_MAX;
+	temp = INT32_MAX;
 	while(y < 2)
 	{
 		x = 0;
@@ -56,8 +60,10 @@ int	check_min(t_data *global, int x, int y)
 int check_max(t_data *global, int x, int y)
 {
 	int temp;
+	int i;
 	
-	temp = INT_MIN;
+	i = 1;
+	temp = INT32_MIN;
 	x = 0;
 	while (x < global->len_a && y == 0)
 	{
@@ -98,22 +104,17 @@ int check_split(char *global)
 	int i = 0;
 	// int j = 0;
 	int tmp;
-	int y;
 	int temp;
 
-	y = 0;
 	temp = 0;
 	args = ft_split(global, ' ');
 	while (args[i])
 	{
-		check_argv(args, i);
+		tmp = ft_atoi(args[i]);
 		temp++;
+		// printf("%d\n", temp[i]);
 		i++;
 	}
-	while (args[y])
-		(free(args[y]), args[y] = NULL, y++);
-	free(args);
-	args = NULL;
 	return temp;
 }
 
@@ -133,7 +134,5 @@ void	check_len_argv(t_data *global)
 		temp += tmp;
 		i++;	
 	}
-	
 	global->len_max = temp;
-	printf ("max = %d\n", global->len_max);
 }
