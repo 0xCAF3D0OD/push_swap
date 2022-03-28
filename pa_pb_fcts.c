@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pa_pb_fcts.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 11:45:51 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/27 13:47:56 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/28 17:24:20 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,35 @@ void	manage_pa_rra(t_data *global)
 	int	x;
 	int temp;
 
-	x = 0;
+	x = global->len_a - 1;
 	temp = 0;
-	printf("global = %d\n", global->len_a);
-	printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 1\n");
-	while(x < global->len_b)
-	{
-		printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 2\n");
-		if (x == global->len_b - 1)
-			temp = global->tab[0][x];
-		printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 3\n");
-		x++;
-	}
-	printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 4\n");
-	while(x >= 0)
-	{
+	printf("len_a: %d\n", global->len_a);
+	while (x >= 0)
+	{ 
 		printf("x = %d\n", x);
-		printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 5\n");
-		if (x > 0)
+		check_fct(global), printf("pa_rra_function\n");
+		if (x == global->len_a)
+			temp = global->tab[0][x];
+		else if (x == 0)
+			global->tab[0][0] = temp;
+		else
 			global->tab[0][x] = global->tab[0][x - 1];
-		printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 6\n");
-		if (x == 0)
-			global->tab[0][x] = temp;
-		printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 7\n");
 		x--;
 	}
-	printf("quick_sorte: 2.1.1: manage_pa: 2: manage_pa_rra: 8\n");
+	// while(x < global->len_a - 1)
+	// {
+	// 	if (x == global->len_a - 2)
+	// 		temp = global->tab[0][x];
+	// 	x++;
+	// }
+	// while(x >= 0)
+	// {
+	// 	if (x > 0)
+	// 		global->tab[0][x] = global->tab[0][x - 1];
+	// 	if (x == 0)
+	// 		global->tab[0][x] = temp;
+	// 	x--;
+	// }
 }
 
 void	manage_pa_rb(t_data *global)
@@ -52,19 +55,35 @@ void	manage_pa_rb(t_data *global)
 
 	x = 0;
 	// temp = 0;
-	while (x < global->len_b)
+	while(x <= global->len_b)
 	{
+		check_fct(global), printf("pa_rb_function\n");
+		printf("x = %d\n", x);
 		if (x == 0)
 		{
 			temp = global->tab[1][0];
 			global->tab[1][0] = global->tab[1][1];
+			x++;
 		}
-		if (x > 0)
-			global->tab[1][x] = global->tab[1][x + 1];
-		if (x == global->len_b - 1)
+		if (x == global->len_b)
 			global->tab[1][x] = temp;
+		else
+			global->tab[1][x] = global->tab[1][x + 1];
 		x++;
 	}
+	// while (x < global->len_b)
+	// {
+	// 	if (x == 0)
+	// 	{
+	// 		temp = global->tab[1][0];
+	// 		global->tab[1][0] = global->tab[1][1];
+	// 	}
+	// 	if (x > 0)
+	// 		global->tab[1][x] = global->tab[1][x + 1];
+	// 	if (x == global->len_b - 1)
+	// 		global->tab[1][x] = temp;
+	// 	x++;
+	// }
 }
 
 void	manage_pb_rrb(t_data *global)
@@ -72,22 +91,35 @@ void	manage_pb_rrb(t_data *global)
 	int	x;
 	int temp;
 
-	x = 0;
+	x = global->len_b - 1;
 	temp = 0;
-	while(x < global->len_max - 1)
-	{
-		if (x == global->len_max - 2)
+	printf("len_b: %d\n", global->len_b);
+	while (x >= 0)
+	{ 
+		printf("x = %d\n", x);
+		check_fct(global), printf("pb_rrb_function\n");
+		if (x == global->len_b)
 			temp = global->tab[1][x];
-		x++;
-	}
-	while(x >= 0)
-	{
-		if (x > 0)
+		else if (x == 0)
+			global->tab[1][0] = temp;
+		else
 			global->tab[1][x] = global->tab[1][x - 1];
-		if (x == 0)
-			global->tab[1][x] = temp;
 		x--;
 	}
+	// while(x < global->len_max - 1)
+	// {
+	// 	if (x == global->len_max - 2)
+	// 		temp = global->tab[1][x];
+	// 	x++;
+	// }
+	// while(x >= 0)
+	// {
+	// 	if (x > 0)
+	// 		global->tab[1][x] = global->tab[1][x - 1];
+	// 	if (x == 0)
+	// 		global->tab[1][x] = temp;
+	// 	x--;
+	// }
 }
 
 void	manage_pb_ra(t_data *global)
@@ -97,17 +129,17 @@ void	manage_pb_ra(t_data *global)
 
 	x = 0;
 	temp = 0;
-	while(x < global->len_a - 1)
+	while(x <= global->len_a - 1)
 	{
 		if (x == 0)
 		{
 			temp = global->tab[0][0];
 			global->tab[0][0] = global->tab[0][1];
 		}
-		if (x > 0)
-			global->tab[0][x] = global->tab[0][x + 1];
-		if (x == global->len_a - 1)
+		else if (x == global->len_a - 1)
 			global->tab[0][x] = temp;
+		else
+			global->tab[0][x] = global->tab[0][x + 1];
 		x++;
 	}
 }

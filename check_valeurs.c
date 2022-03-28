@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valeurs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:17:54 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/26 20:24:28 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/28 14:47:20 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int check_len_a(t_data *global, int x, int y)
 
 int check_len_b(t_data *global, int x, int y)
 {	
+	(void) y;
 	x = 0;
 	while (x < global->len_max)
 		x++;
@@ -97,7 +98,7 @@ int check_split(char *global)
 	char **args;
 	int i = 0;
 	// int j = 0;
-	int tmp;
+	// int tmp;
 	int y;
 	int temp;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:13:20 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/26 18:19:29 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/28 14:42:38 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	manage_info_tab(char **argv, t_data *global)
 {	
 	int x;
 	int y;
+	(void) argv;
 
 	x = 0;
 	y = 0;

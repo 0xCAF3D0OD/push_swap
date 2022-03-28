@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_cmd_r.c                                       :+:      :+:    :+:   */
+/*   push_cmd_in_r.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 11:59:48 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/22 15:35:25 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/28 16:28:17 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,23 @@ void	manage_ra(t_data *global)
 	int	y;
 	int temp;
 
+	temp = 0;
 	x = 0;
 	y = 0;
 	if (!(global->tab[0]))
 		printf("error\n"), exit(1);
 	while(x < global->len_a)
 	{
-		if (x == 0 && y == 0)
+		if (x == 0)
 		{
 			temp = global->tab[0][0];
 			global->tab[0][0] = global->tab[0][1];
+			x++;
 		}
-		if (x > 0 && y == 0)
+		if (x == global->len_a - 1)
+			global->tab[0][x] = temp;
+		else
 			global->tab[0][x] = global->tab[0][x + 1];
-		if (x == global->len_a - 1 && y == 0)
-			global->tab[y][x] = temp;
 		x++;
 	}
 }

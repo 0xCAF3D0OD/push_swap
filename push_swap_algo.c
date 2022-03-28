@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_algo.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:06:51 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/27 15:37:49 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/28 16:30:59 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,8 +211,6 @@ int	check_afer_bigger(t_data *global, int len)
 	}
 	if (i != 0)
 		return (1);
-	else
-		return (0);
 	return (0);
 }
 
@@ -224,38 +222,27 @@ void	quick_sorte(t_data *global, int x)
 	
 	len = global->len_a;
 	bit = 0;
-	printf("quick_sorte: 1\n");
 	i = check_afer_bigger(global, len);
-	printf("quick_sorte: 2\n");
+	printf("i = %d\n", i);
 	while (i == 1)
 	{
-		printf("quick_sorte: 2.1\n");
+		x = 0;
 		while (x < len)
 		{
 			check_fct(global);
-			printf ("lenb: %d\n", global->len_b);
-			printf ("lena: %d\n", global->len_a);
-			printf("quick_sorte: 2.1.1\n");
-			// temp = global->tab[0][0];
+			printf("1\n");
 			if ((global->tab[0][0] >> bit) & 1)
-				(manage_pb(global), printf("pb\n"));
+			printf("len_b = %d\n", global->len_b), (manage_pb(global), printf("pb\n"));
 			else
-				(manage_ra(global), printf("ra\n"));
-			printf("quick_sorte: 2.1.2\n");
+			(manage_ra(global), printf("ra\n"));
 			x++;
 		}
-		printf("quick_sorte: 2.2\n");
 		bit++;
-		printf ("lenb: %d\n", global->len_b);
-		printf ("lena: %d\n", global->len_a);
+		printf("3\n");
 		while (global->len_b > 0)
 			(manage_pa(global), printf("pa\n"), check_fct(global));
-		printf("quick_sorte: 2.3\n");
 		i = check_afer_bigger(global, len);
-		exit(1);
 	}
-	printf("quick_sorte: 3\n");	
-	
 }
 
 void	manage_algo(char **argv, t_data *global)
