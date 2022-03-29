@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 16:02:13 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/28 14:46:22 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/29 18:41:59 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct	s_data
 {
 	int	**tab;
+	int *tab_c;
 	char **argv;
 	int	argc;
 	int	len_max;
@@ -35,13 +36,16 @@ typedef struct	s_data
 }				t_data;
 
 void	check_len_argv(t_data *global);
-void	check_argv(char **argv, int i);
+void	check_argv(t_data *global, char **argv, int i);
 int		ordre_checker(t_data *global);
+int		put_argv_in_tab(char *global, int *tab, int j);
 void	manage_cmd(char **argv, t_data *global);
+int 	check_split(char *global, t_data *global_2);
 void	manage_info_tab(char **argv, t_data *global);
 void	manage_len_tab(t_data *global, int y);
+void	radix(t_data *global, int x);
 void	check_tab(char **argv, t_data *global, int i);
-void	check_similaire(t_data *global, int y);
+void	check_similaire(t_data *global);
 void	manage_free(t_data *global);
 void	check_fct(t_data *global);
 int 	check_len_a(t_data *global, int x, int y);
@@ -62,9 +66,10 @@ void	manage_rra(t_data *global);
 void	manage_rrb(t_data *global);
 void	manage_rrr(t_data *global);
 void	manage_algo(char **argv, t_data *global);
+int		check_afer_bigger(t_data *global, int len);
 int		check_min(t_data *global, int x, int y);
 int 	check_max(t_data *global, int x, int y);
 int		check_min_max_b(t_data *global, int x, int y);
-void	nbr(void);
+void	ft_exit(t_data *global, int i);
 
 #endif

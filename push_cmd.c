@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 17:35:19 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/28 16:21:17 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/29 18:29:28 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 void	manage_sa(t_data *global)
 {
 	int	x;
-	int temp;
-	
+	int	temp;
+   
+   
 	x = 0;
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);
+		ft_exit(global, 1);
 	temp = global->tab[0][0];
 	global->tab[0][0] = global->tab[0][1];
 	global->tab[0][1] = temp;
@@ -27,10 +28,10 @@ void	manage_sa(t_data *global)
 
 void	manage_sb(t_data *global)
 {
-	int temp;
+	int	temp;
 
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);
+		ft_exit(global, 1);
 	temp = global->tab[1][0];
 	global->tab[1][0] = global->tab[1][1];
 	global->tab[1][1] = temp;
@@ -38,11 +39,14 @@ void	manage_sb(t_data *global)
 
 void	manage_ss(t_data *global)
 {
-	int	x = 0;
-	int	y = 0;
-	int temp;
+	int	x;
+	int	y;
+	int	temp;
+
+	x = 0;
+	y = 0;
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);
+		ft_exit(global, 1);
 	while (y < 2)
 	{
 		x = 0;
@@ -63,7 +67,7 @@ void	manage_ss(t_data *global)
 void	manage_pa(t_data *global)
 {
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);
+		ft_exit(global, 1);
 	global->len_a++;
 	manage_pa_rra(global);
 	global->tab[0][0] = global->tab[1][0];
@@ -74,7 +78,7 @@ void	manage_pa(t_data *global)
 void	manage_pb(t_data *global)
 {
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);
+		ft_exit(global, 1);
 	global->len_b++;
 	manage_pb_rrb(global);
 	global->tab[1][0] = global->tab[0][0];

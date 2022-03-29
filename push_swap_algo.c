@@ -3,96 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_algo.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:06:51 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/29 11:27:29 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/29 18:38:12 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int check_len_one_arg(char **temp)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (temp[i] != 0)
-// 		i++;
-// 	return (i);
-// }
-
-// int *stock_input(t_data *global, char **temp, int x)
-// {
-// 	int i;
-// 	int y;
-// 	int *exe;
-
-// 	i = 0;
-// 	x = 0;
-// 	y = 0;
-// 	global->len_a = check_len_one_arg(temp);
-// 	exe = calloc(sizeof(int*), global->len_a); 
-// 	while (temp[y])
-// 	{
-// 		i = ft_atoi(temp[y]);
-// 		printf("i: %d\n", i);
-// 		exe[x] = i;
-// 		printf("exe: %d\n", exe[x]);
-// 		x++;
-// 		y++;
-// 	}
-// 	x = 0;
-// 	while (exe[x])
-// 		printf("----------\ntemp: %d\n", exe[x]), x++;
-// 	return (exe);
-// }
-
-// void	stock_argv(char **argv, t_data *global, int x, int y)
-// {
-// 	char **temp;
-// 	int exe;
-// 	// int	ordre;
-	
-// 	y = 1;
-// 	x = 0;
-// 	int itera = 0;
-// 	printf("argc: %d\n", global->argc);
-// 	while (y < global->argc)
-// 	{
-// 		temp = ft_split(argv[y], ' ');
-// 		itera = 0;
-// 		global->len_a = check_len_one_arg(temp);
-// 		exe = calloc(sizeof(int*), global->len_a); 
-// 		while (temp[itera])
-// 		{
-// 			exe = ft_atoi(temp[itera]);
-// 			global->tab[0][x] = exe;
-// 			x++;
-// 			itera++;
-// 		}
-// 	//	global->tab[0][x] = stock_input(global, temp, x);
-// 		y++;
-// 	}
-// 	x = 0;
-// 	while (global->tab[x])
-// 	{
-// 		for (int i = 0; global->tab[x][i]; i++)
-// 			printf("global: %d\n", global->tab[x][i]);
-// 		x++;
-// 	}
-// 	// ordre = ordre_checker(global);
-// 	// if (ordre != 0)
-// 	// 	ft_printf("tout est dans l'ordre!\n"), exit(1);
-	
-
 //une des deux fonctions qui m'a fais chier ma race elle permet de spliter les valeurs 
 int put_argv_in_tab(char *global, int *tab, int j)
 {
-	char **tab_tmp;
-	int tmp;
-	int i;
-	int	y;
+	char	**tab_tmp;
+	int		tmp;
+	int		i;
+	int		y;
 
 	i = 0;
 	y = 0;
@@ -102,7 +28,6 @@ int put_argv_in_tab(char *global, int *tab, int j)
 		tmp = ft_atoi(tab_tmp[i]);
 		tab[j] = tmp;
 		j++;
-		// printf("rett: %d\n", tab[j]);
 		i++;
 	}
 	i = 0;
@@ -116,32 +41,27 @@ int put_argv_in_tab(char *global, int *tab, int j)
 void	one_arg(t_data *global, int y)
 {
 	int	i;
-	int *tab;
-	int j;
+	int	*tab;
+	int	j;
 	
 	j = 0;
 	i = 1;
-	printf("%d\n", global->len_max);
-	printf("%d\n", global->argc);
 	y = global->len_max;
 	tab = malloc(sizeof(int*) * y);
 	while (i < global->argc)
 	{
-		printf("%s\n", global->argv[i]);
 		j += put_argv_in_tab(global->argv[i], tab, j);
 		i++;
 	}
 	i = -1;
 	while (++i < y)
 		global->tab[0][i] = tab[i];
-	if (tab != 0)
-		free(tab), tab = NULL;
+	free(tab), tab = NULL;
 }
 
-void	three_args(t_data *global, int y)
+void	three_args(t_data *global)
 {
-	int x;
-	(void) y;
+	int	x;
 
 	x = 0;
 	if (global->len_a == 2)
@@ -163,10 +83,35 @@ void	three_args(t_data *global, int y)
 	}
 }
 
+void	for_args(t_data *global, int y, int x)
+{
+	int	max_b;
+	int	find_max;
+
+	max_b = 0;
+	find_max = 0;
+	global->max = check_max(global, x, y);
+	while (x < global->len_a)
+	{
+		while (find_max < global->len_a)
+		{
+			if (global->tab[0][0] == global->max)
+				printf("pb\n"), manage_pb(global);
+			else
+				printf("ra\n"), manage_ra(global);
+			find_max++;
+		}
+		x++;
+	}
+	three_args(global);
+	if (global->tab[1][0] == global->max)
+		printf("pa\n"), manage_pa(global), printf("ra\n"), manage_ra(global);
+}
+
 void	five_args(t_data *global, int y, int x)
 {
-	int min_max_b;
-	int find_min_max;
+	int	min_max_b;
+	int	find_min_max;
 
 	min_max_b = 0;
 	find_min_max = 0;
@@ -187,7 +132,7 @@ void	five_args(t_data *global, int y, int x)
 		}
 		x++;
 	}
-	three_args(global, y);
+	three_args(global);
 	if (global->tab[1][0] == global->max && global->tab[1][1] == global->min)
 		printf("pa\n"), manage_pa(global), printf("ra\n"), manage_ra(global), printf("pa\n"), manage_pa(global);
 	else if (global->tab[1][0] == global->min && global->tab[1][1] == global->max)
@@ -197,7 +142,6 @@ void	five_args(t_data *global, int y, int x)
 
 void    ft_firsttri(t_data *global)
 {
-	//JJJJJKJJJJJJJ
     long int	nb;
     int			i;
     int			j;
@@ -205,11 +149,11 @@ void    ft_firsttri(t_data *global)
 
     nb = -2147483649;
     i = 0;
+	global->tab_c = calloc(sizeof(int), global->len_a + 1);
     while (i != global->len_a)
     {
         s = 0;
         j = 0;
-		printf("nb = %ld\n", nb);
         while (j != global->len_a)
         {
             if (global->tab[0][s] <= nb)
@@ -219,52 +163,47 @@ void    ft_firsttri(t_data *global)
             j++;
         }
         nb = global->tab[0][s];
-        global->tab[0][s] = i;
+        global->tab_c[s] = i;
         i++;
     }
-	printf("nb = %ld\n", nb);
 }
 
 //l'algo principal qui trie en fonction des bites de la valeur
-void	quick_sorte(t_data *global, int x)
+void	radix(t_data *global, int x)
 {
-	int i;
-	int len;
-	int bit;
+	int	i;
+	int	len;
+	int	bit;
 	
 	len = global->len_a;
 	bit = 0;
-	ft_firsttri(global),
+	ft_firsttri(global);
 	i = check_afer_bigger(global, len);
-	printf("i = %d\n", i);
-	exit(1);
-	while (i == 1)
+	while (check_afer_bigger(global, len) == 1)
 	{
 		x = 0;
 		while (x < len)
 		{
-			printf("global: %d\n", global->len_max);
-			check_fct(global);
-			if ((global->tab[0][0] >> bit) & 1)
-			printf("len_b = %d\n", global->len_b), (manage_pb(global), printf("pb\n"));
+			if ((global->tab_c[x] >> bit) & 1)
+				(manage_ra(global), printf("ra\n"));
 			else
-			(manage_ra(global), printf("ra\n"));
+				(manage_pb(global), printf("pb\n"));
 			x++;
 		}
 		bit++;
-		printf("3\n");
 		while (global->len_b > 0)
-			(manage_pa(global), printf("pa\n"), check_fct(global));
-		i = check_afer_bigger(global, len);
+			(manage_pa(global), printf("pa\n"));
+		free(global->tab_c), global->tab_c = NULL;
+		ft_firsttri(global);
 	}
 }
 
 //la tour de controle de tous les algos
 void	manage_algo(char **argv, t_data *global)
 {
-	int x;
-	int y;
-	int ordre;
+	int	x;
+	int	y;
+	int	ordre;
 
 	x = 0;
 	y = 0;
@@ -272,16 +211,16 @@ void	manage_algo(char **argv, t_data *global)
 	global->len_b = 0;
 	manage_info_tab(argv, global);
 	one_arg(global, y);
-	check_similaire(global, y);
+	check_similaire(global);
 	ordre = ordre_checker(global);
-	printf("global: %d", global->len_max);
-	if (ordre == 1)
-		(printf("c'est dans l'ordre!\n"), exit(1));
-	if (global->len_max < 5)
-		three_args(global, y);
+	if (ordre == 0)
+		exit(1);
+	if (global->len_max < 4)
+		three_args(global);
+	if (global->len_max == 4)
+		for_args(global, y, x);
 	else if (global->len_max == 5)
 		five_args(global, y, x);
 	else
-		quick_sorte(global, x);
-	check_fct(global);
+		radix(global, x);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 10:54:36 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/29 00:33:03 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/29 18:08:42 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int	main(int argc, char **argv)
 {
 	t_data global;
 	
+	if (argc == 2 && ft_isdigit(*argv[1]))
+			exit(0);
 	global.argc = argc;
 	global.argv = argv;
 	if (global.argc < 1)
-		exit(1);
+		ft_exit(&global, 0);
 	check_len_argv(&global);
 	manage_algo(argv, &global);
 	return (0);

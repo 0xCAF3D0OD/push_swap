@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 11:59:48 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/28 16:28:17 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/29 16:01:40 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	manage_ra(t_data *global)
 	x = 0;
 	y = 0;
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);
+		ft_exit(global, 1);
 	while(x < global->len_a)
 	{
 		if (x == 0)
@@ -45,7 +45,7 @@ void	manage_rb(t_data *global)
 
 	x = 0;
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);	
+		ft_exit(global, 1);	
 	while(x < global->argc - 1)
 	{
 		if (x == 0)
@@ -70,7 +70,7 @@ void	manage_rr(t_data *global)
 	x = 0;
 	y = 0;
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);
+		ft_exit(global, 1);
 	while (y < 2)
 	{
 		x = 0;
@@ -98,7 +98,7 @@ void	manage_rra(t_data *global)
 	x = 0;
 	int temp;
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);;
+		ft_exit(global, 1);;
 	while(x < global->len_a)
 	{
 		if (x == global->len_a - 1)
@@ -121,7 +121,7 @@ void	manage_rrb(t_data *global)
 
 	x = 0;
 	if (!(global->tab[0]))
-		printf("error\n"), exit(1);;
+		ft_exit(global, 1);;
 	while(x < global->len_b)
 	{
 		if (x == global->len_b - 1)
@@ -147,7 +147,7 @@ void	manage_rrr(t_data *global)
 	x = 0;
 	y = 0;
 	if (!(global->tab[0] && global->tab[1]))
-		printf("error\n"), exit(1);;
+		ft_exit(global, 1);;
 	while (y < 2)
 	{
 		x = 0;

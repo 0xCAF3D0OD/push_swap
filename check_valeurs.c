@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valeurs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:17:54 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/29 10:35:52 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/29 16:30:11 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int check_len_b(t_data *global, int x, int y)
 	x = 0;
 	while (x < global->len_max)
 		x++;
-	printf ("b = %d\n", x);
 	return (x);
 }
 //je check la valeur minimal de mon tableau
@@ -55,6 +54,18 @@ int	check_min(t_data *global, int x, int y)
 	return (temp);
 }
 //le max pour celle ci
+void ft_exit(t_data *global, int i)
+{
+	ft_putstr_fd("Error\n", 2);
+	if (i == 1)
+	{
+		free(global->tab[0]);
+		free(global->tab[1]);
+		free(global->tab);
+	}
+	exit(1);
+}
+
 int check_max(t_data *global, int x, int y)
 {
 	int temp;
@@ -94,7 +105,7 @@ int check_min_max_b(t_data *global, int x, int y)
 	return (0);
 }
 //cette fonction me permet de compter le nbr de valeur a l'interieur de chaque argument, entre guillemet en particulier
-int check_split(char *global)
+int check_split(char *tab, t_data *global)
 {
 	char **args;
 	int i = 0;
@@ -105,10 +116,10 @@ int check_split(char *global)
 
 	y = 0;
 	temp = 0;
-	args = ft_split(global, ' ');
+	args = ft_split(tab, ' ');
 	while (args[i])
 	{
-		check_argv(args, i);
+		check_argv(global, args, i);
 		temp++;
 		i++;
 	}
@@ -131,13 +142,11 @@ void	check_len_argv(t_data *global)
 	// printf("%d\n", global->argc);
 	while (i < global->argc)
 	{
-		tmp = check_split(global->argv[i]);
+		tmp = check_split(global->argv[i], global);
 		temp += tmp;
 		i++;	
 	}
-	
 	global->len_max = temp;
-	printf ("max = %d\n", global->len_max);
 }
 
 //cette fonction verifie si la valeur suivante est inferieur a la precedente
@@ -150,12 +159,10 @@ int	check_afer_bigger(t_data *global, int len)
 	j = 0;
 	while (j < len - 1)
 	{
-		printf("global = %d\n", global->tab[0][j]);
 		if (global->tab[0][j] > global->tab[0][j + 1])
 			i++;
 		j++;
 	}
-	printf("global = %d\n", global->tab[0][j]);
 	if (i != 0)
 		return (1);
 	return (0);
