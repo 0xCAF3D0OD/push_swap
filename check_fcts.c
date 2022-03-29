@@ -6,12 +6,12 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:20:16 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/26 19:56:45 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/28 21:25:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+// je verifie si les valeurs sont bien toutes différentes
 void	check_similaire(t_data *global, int y)
 {	
 	int j;
@@ -30,7 +30,7 @@ void	check_similaire(t_data *global, int y)
 		j++;
 	}
 }
-
+// je verifie si les valeurs sont en désordre
 int	ordre_checker(t_data *global)
 {
 	int x;
@@ -52,7 +52,7 @@ int	ordre_checker(t_data *global)
 	else
 		return (0);
 }
-
+//je verifie si les valeurs sont bien toutes des chiffres
 void check_argv(char **argv, int i)
 {
 	int j = 0;
@@ -74,7 +74,7 @@ void check_argv(char **argv, int i)
 		i++;
 	}
 }
-
+//cette fonction me permet d'afficher ce qui y a dans le tableau a et b.
 void	check_fct(t_data *global)
 {
 	// static int j = 0;

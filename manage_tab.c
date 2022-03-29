@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   manage_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:13:20 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/28 14:42:38 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/28 21:33:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+//me permet d'etablire la longueur de mon pointeur de tableau
 void	manage_len_tab(t_data *global, int y)
 {
 	global->tab = ft_calloc(2, sizeof(int*));
@@ -21,7 +21,7 @@ void	manage_len_tab(t_data *global, int y)
 		y++;
 	}
 }
-
+//créer le tableau
 void	manage_info_tab(char **argv, t_data *global)
 {	
 	int x;

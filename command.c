@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:45:17 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/21 11:45:32 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/28 21:32:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+//fonction ozef
 void	manage_cmd(char **argv, t_data *global)
 {
 	// int x = 0;

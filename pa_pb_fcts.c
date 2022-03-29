@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   pa_pb_fcts.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 11:45:51 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/28 17:24:20 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/29 00:41:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+//les fonction suivantes me permette de faire de cmd dans la cmd pa ou pb 
 void	manage_pa_rra(t_data *global)
 {
 	int	x;
@@ -22,8 +22,8 @@ void	manage_pa_rra(t_data *global)
 	printf("len_a: %d\n", global->len_a);
 	while (x >= 0)
 	{ 
-		printf("x = %d\n", x);
-		check_fct(global), printf("pa_rra_function\n");
+		// printf("x = %d\n", x);
+		// check_fct(global), printf("pa_rra_function\n");
 		if (x == global->len_a)
 			temp = global->tab[0][x];
 		else if (x == 0)
@@ -32,20 +32,6 @@ void	manage_pa_rra(t_data *global)
 			global->tab[0][x] = global->tab[0][x - 1];
 		x--;
 	}
-	// while(x < global->len_a - 1)
-	// {
-	// 	if (x == global->len_a - 2)
-	// 		temp = global->tab[0][x];
-	// 	x++;
-	// }
-	// while(x >= 0)
-	// {
-	// 	if (x > 0)
-	// 		global->tab[0][x] = global->tab[0][x - 1];
-	// 	if (x == 0)
-	// 		global->tab[0][x] = temp;
-	// 	x--;
-	// }
 }
 
 void	manage_pa_rb(t_data *global)
@@ -57,8 +43,8 @@ void	manage_pa_rb(t_data *global)
 	// temp = 0;
 	while(x <= global->len_b)
 	{
-		check_fct(global), printf("pa_rb_function\n");
-		printf("x = %d\n", x);
+		// check_fct(global), printf("pa_rb_function\n");
+		// printf("x = %d\n", x);
 		if (x == 0)
 		{
 			temp = global->tab[1][0];
@@ -71,19 +57,6 @@ void	manage_pa_rb(t_data *global)
 			global->tab[1][x] = global->tab[1][x + 1];
 		x++;
 	}
-	// while (x < global->len_b)
-	// {
-	// 	if (x == 0)
-	// 	{
-	// 		temp = global->tab[1][0];
-	// 		global->tab[1][0] = global->tab[1][1];
-	// 	}
-	// 	if (x > 0)
-	// 		global->tab[1][x] = global->tab[1][x + 1];
-	// 	if (x == global->len_b - 1)
-	// 		global->tab[1][x] = temp;
-	// 	x++;
-	// }
 }
 
 void	manage_pb_rrb(t_data *global)
@@ -96,8 +69,8 @@ void	manage_pb_rrb(t_data *global)
 	printf("len_b: %d\n", global->len_b);
 	while (x >= 0)
 	{ 
-		printf("x = %d\n", x);
-		check_fct(global), printf("pb_rrb_function\n");
+		// printf("x = %d\n", x);
+		// check_fct(global), printf("pb_rrb_function\n");
 		if (x == global->len_b)
 			temp = global->tab[1][x];
 		else if (x == 0)
@@ -106,20 +79,6 @@ void	manage_pb_rrb(t_data *global)
 			global->tab[1][x] = global->tab[1][x - 1];
 		x--;
 	}
-	// while(x < global->len_max - 1)
-	// {
-	// 	if (x == global->len_max - 2)
-	// 		temp = global->tab[1][x];
-	// 	x++;
-	// }
-	// while(x >= 0)
-	// {
-	// 	if (x > 0)
-	// 		global->tab[1][x] = global->tab[1][x - 1];
-	// 	if (x == 0)
-	// 		global->tab[1][x] = temp;
-	// 	x--;
-	// }
 }
 
 void	manage_pb_ra(t_data *global)
