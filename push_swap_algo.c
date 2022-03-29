@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:06:51 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/29 11:07:19 by marvin           ###   ########.fr       */
+/*   Updated: 2022/03/29 11:27:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,7 @@ void	five_args(t_data *global, int y, int x)
 
 void    ft_firsttri(t_data *global)
 {
+	//JJJJJKJJJJJJJ
     long int	nb;
     int			i;
     int			j;
