@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 17:35:19 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/29 18:29:28 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/31 12:16:06 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	manage_sa(t_data *global)
 {
 	int	x;
 	int	temp;
-   
-   
+
 	x = 0;
 	if (!(global->tab[0]))
 		ft_exit(global, 1);
@@ -50,7 +49,7 @@ void	manage_ss(t_data *global)
 	while (y < 2)
 	{
 		x = 0;
-		while(x < global->len_max)
+		while (x < global->len_max)
 		{
 			if (x == 1)
 			{

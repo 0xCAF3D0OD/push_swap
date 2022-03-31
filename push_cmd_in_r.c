@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 11:59:48 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/29 16:01:40 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/31 12:23:33 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	manage_ra(t_data *global)
 {
 	int	x;
 	int	y;
-	int temp;
+	int	temp;
 
 	temp = 0;
 	x = 0;
 	y = 0;
 	if (!(global->tab[0]))
 		ft_exit(global, 1);
-	while(x < global->len_a)
+	while (x < global->len_a)
 	{
 		if (x == 0)
 		{
@@ -38,15 +38,16 @@ void	manage_ra(t_data *global)
 		x++;
 	}
 }
+
 void	manage_rb(t_data *global)
 {
 	int	x;
-	int temp;
+	int	temp;
 
 	x = 0;
 	if (!(global->tab[0]))
-		ft_exit(global, 1);	
-	while(x < global->argc - 1)
+		ft_exit(global, 1);
+	while (x < global->argc - 1)
 	{
 		if (x == 0)
 		{
@@ -65,16 +66,16 @@ void	manage_rr(t_data *global)
 {
 	int	x;
 	int	y;
-	int temp;
+	int	temp;
 
 	x = 0;
-	y = 0;
+	y = -1;
 	if (!(global->tab[0]))
 		ft_exit(global, 1);
-	while (y < 2)
+	while (++y < 2)
 	{
-		x = 0;
-		while(x < global->argc - 1)
+		x = -1;
+		while (++x < global->argc - 1)
 		{
 			if (x == 0)
 			{
@@ -85,27 +86,25 @@ void	manage_rr(t_data *global)
 				global->tab[y][x] = global->tab[y][x + 1];
 			if (x == global->argc - 2)
 				global->tab[y][x] = temp;
-			x++;
 		}
-		y++;
 	}
 }
 
 void	manage_rra(t_data *global)
 {
 	int	x;
+	int	temp;
 
 	x = 0;
-	int temp;
 	if (!(global->tab[0]))
-		ft_exit(global, 1);;
-	while(x < global->len_a)
+		ft_exit(global, 1);
+	while (x < global->len_a)
 	{
 		if (x == global->len_a - 1)
 			temp = global->tab[0][x];
 		x++;
 	}
-	while(x >= 0)
+	while (x >= 0)
 	{
 		if (x > 0)
 			global->tab[0][x] = global->tab[0][x - 1];
@@ -114,57 +113,27 @@ void	manage_rra(t_data *global)
 		x--;
 	}
 }
+
 void	manage_rrb(t_data *global)
 {
 	int	x;
-	int temp;
+	int	temp;
 
 	x = 0;
 	if (!(global->tab[0]))
-		ft_exit(global, 1);;
-	while(x < global->len_b)
+		ft_exit(global, 1);
+	while (x < global->len_b)
 	{
 		if (x == global->len_b - 1)
 			temp = global->tab[1][x];
 		x++;
 	}
-	while(x >= 0)
+	while (x >= 0)
 	{
 		if (x > 0)
 			global->tab[1][x] = global->tab[1][x - 1];
 		if (x == 0)
 			global->tab[1][x] = temp;
 		x--;
-	}
-}
-
-void	manage_rrr(t_data *global)
-{
-	int	x;
-	int	y;
-	int temp;
-
-	x = 0;
-	y = 0;
-	if (!(global->tab[0] && global->tab[1]))
-		ft_exit(global, 1);;
-	while (y < 2)
-	{
-		x = 0;
-		while(x < global->len_a)
-		{
-			if (x == global->len_a - 1)
-				temp = global->tab[y][x]; 
-			x++;
-		}
-		while(x >= 0)
-		{
-			if (x > 0)
-				global->tab[y][x] = global->tab[y][x - 1];
-			if (x == 0)
-				global->tab[y][x] = temp;
-			x--;
-		}
-		y++;
 	}
 }

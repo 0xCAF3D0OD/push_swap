@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 11:26:24 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/25 17:36:07 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:28:24 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stddef.h>
 # include <stdio.h>
 
-#  define BUFFER_SIZE 1000
+# define BUFFER_SIZE 1000
 
 int		ft_atoi(char *args);
 void	ft_bzero(void *s, size_t n);
@@ -56,6 +56,5 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*get_next_line(int fd);
-
 
 #endif

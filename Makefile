@@ -6,7 +6,7 @@
 #    By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 19:21:15 by kdi-noce          #+#    #+#              #
-#    Updated: 2022/03/29 16:01:53 by kdi-noce         ###   ########.fr        #
+#    Updated: 2022/03/31 16:35:43 by kdi-noce         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,10 @@ SRC		= 	push_swap.c 		\
 			push_cmd_in_r.c 	\
 			manage_tab.c 		\
 			push_swap_algo.c 	\
-			check_fcts.c 		\
 			pa_pb_fcts.c 		\
-			check_valeurs.c
+			check_valeurs.c		\
+			check_fcts_argv.c	\
+			check_fcts_tab.c
 #OBJ		= $(SRC:.c=.o)
 
 #%.o: %.c

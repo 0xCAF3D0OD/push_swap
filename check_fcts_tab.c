@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_fcts.c                                       :+:      :+:    :+:   */
+/*   check_fcts_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 15:20:16 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/29 16:47:19 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:26:25 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 // je verifie si les valeurs sont bien toutes différentes
-void	check_similaire(t_data *global, int y)
+void	check_similaire(t_data *global)
 {	
-	int j;
-	int i;
-	(void) y;
-		
+	int	j;
+	int	i;
+
 	j = 0;
 	while (j < global->len_max)
 	{
@@ -31,11 +31,12 @@ void	check_similaire(t_data *global, int y)
 		j++;
 	}
 }
+
 // je verifie si les valeurs sont en désordre
 int	ordre_checker(t_data *global)
 {
-	int x;
-	int compt;
+	int	x;
+	int	compt;
 
 	x = 0;
 	compt = 0;
@@ -47,55 +48,58 @@ int	ordre_checker(t_data *global)
 	}
 	return (0);
 }
-//je verifie si les valeurs sont bien toutes des chiffres
-void check_argv(t_data *global, char **argv, int i)
-{
-	int j = 0;
 
-	while(argv[i])
+void	ft_firsttri(t_data *global)
+{
+	long int	nb;
+	int			i;
+	int			j;
+	int			s;
+
+	nb = -2147483649;
+	i = 0;
+	global->tab_c = calloc(sizeof(int), global->len_a + 1);
+	while (i != global->len_a)
 	{
+		s = 0;
 		j = 0;
-		while(argv[i][j])
+		while (j != global->len_a)
 		{
-			if (argv[i][j] == '-')
-			{	
-				if (!(argv[i][j + 1] >= '0' && argv[i][j + 1] <= '9'))
-					ft_exit(global, 0);
-			}
-			else if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				ft_exit(global, 0);
+			if (global->tab[0][s] <= nb)
+				s++;
+			if (global->tab[0][s] > global->tab[0][j] && global->tab[0][j] > nb)
+				s = j;
 			j++;
 		}
+		nb = global->tab[0][s];
+		global->tab_c[s] = i;
 		i++;
 	}
 }
+
 //cette fonction me permet d'afficher ce qui y a dans le tableau a et b.
 void	check_fct(t_data *global)
 {
-	int x = 0;
-	int y = 0;
+	int	x;
+	int	y;
 
+	x = 0;
+	y = 0;
 	while (y < 2)
 	{
 		if (y == 0)
 		{
 			x = 0;
 			while (x < global->len_a)
-			{
-				printf("A =	%d\n", global->tab[0][x]);
-				x++;			
-			}
-			printf("\n");
+				(ft_printf("A =	%d\n", global->tab[0][x]), x++);
+			ft_printf("\n");
 		}
 		if (y == 1)
 		{
 			x = 0;
 			while (x < global->len_b)
-			{
-				printf("B = 	%d\n", global->tab[1][x]);
-				x++;			
-			}
-			printf("\n");
+				(ft_printf("B =	%d\n", global->tab[1][x]), x++);
+			ft_printf("\n");
 		}
 		y++;
 	}

@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 16:21:07 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/25 17:35:19 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/03/31 15:27:48 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	print_error(void)
 {
-	ft_putendl_fd("Error", 2);
+	ft_putendl_fd("Error\n", 2);
 	exit(0);
 }
 
@@ -29,8 +29,6 @@ int	ft_atoi(char *args)
 	int			sign;
 	long long	value;
 
-	// if (!check_args(args))
-		// print_error();
 	i = 0;
 	sign = 1;
 	value = 0;
