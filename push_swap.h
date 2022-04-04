@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 16:02:13 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/31 16:15:54 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:35:33 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_fct(t_data *global);
 void	ft_firsttri(t_data *global);
 /*push_swap_algo.c*/
 void	one_arg(t_data *global, int y);
-void	three_args(t_data *global);
+void	three_args(t_data *global, int y);
 void	for_args(t_data *global, int y, int x);
 void	five_args(t_data *global, int y, int x);
 void	radix(t_data *global, int x);
@@ -60,7 +60,7 @@ int		check_min_max_b(t_data *global, int x);
 /*manage_tab.c*/
 void	manage_info_tab(t_data *global);
 void	manage_len_tab(t_data *global, int y);
-void	manage_others_in_five_args(t_data *global);
+void	manage_others_in_five_args(t_data *global, int temp);
 void	check_tab(char **argv, t_data *global, int i);
 /*manage_cmd.c*/
 void	manage_sa(t_data *global);

@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 11:59:48 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/31 12:23:33 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:30:03 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,21 +95,22 @@ void	manage_rra(t_data *global)
 	int	x;
 	int	temp;
 
-	x = 0;
+	x = global->len_a - 1;
+	temp = 0;
 	if (!(global->tab[0]))
 		ft_exit(global, 1);
-	while (x < global->len_a)
-	{
-		if (x == global->len_a - 1)
-			temp = global->tab[0][x];
-		x++;
-	}
 	while (x >= 0)
 	{
-		if (x > 0)
+		if (x == global->len_a - 1)
+		{
+			temp = global->tab[0][x];
 			global->tab[0][x] = global->tab[0][x - 1];
-		if (x == 0)
+		}
+		else if (x == 0)
 			global->tab[0][x] = temp;
+		else
+			global->tab[0][x] = global->tab[0][x - 1];
+
 		x--;
 	}
 }

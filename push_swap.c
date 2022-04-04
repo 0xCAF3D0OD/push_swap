@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 10:54:36 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/31 15:37:28 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/04/04 16:21:00 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	manage_algo(t_data *global)
 
 	x = 0;
 	y = 0;
+	if (global->len_max <= 1)
+		exit(0);
 	global->len_a = check_len_a(global, x, y);
 	global->len_b = 0;
 	manage_info_tab(global);
@@ -42,7 +44,7 @@ void	manage_algo(t_data *global)
 	if (ordre == 0)
 		exit(1);
 	if (global->len_max < 4)
-		three_args(global);
+		three_args(global, y);
 	if (global->len_max == 4)
 		for_args(global, y, x);
 	else if (global->len_max == 5)
@@ -55,8 +57,6 @@ int	main(int argc, char **argv)
 {
 	t_data	global;
 
-	if (argc == 2 && ft_isdigit(*argv[1]))
-		exit(0);
 	global.argc = argc;
 	global.argv = argv;
 	if (global.argc < 1)

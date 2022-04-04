@@ -6,19 +6,19 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:13:20 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/31 16:35:48 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:35:09 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	manage_others_in_five_args(t_data *global)
+void	manage_others_in_five_args(t_data *global, int temp)
 {
-	if (global->tab[1][0] == global->max && global->tab[1][1] == global->min)
+	if (global->tab[1][0] == temp && global->tab[1][1] == global->min)
 		(ft_printf("pa\n"), manage_pa(global), ft_printf("ra\n"),
 			manage_ra(global), ft_printf("pa\n"), manage_pa(global));
 	else if (global->tab[1][0] == global->min &&
-		global->tab[1][1] == global->max)
+		global->tab[1][1] == temp)
 		(ft_printf("sb\n"), manage_sb(global), ft_printf("pa\n"),
 			manage_pa(global), ft_printf("ra\n"), manage_ra(global),
 			ft_printf("pa\n"), manage_pa(global));

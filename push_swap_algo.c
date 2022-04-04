@@ -6,7 +6,7 @@
 /*   By: kdi-noce <kdi-noce@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 14:06:51 by kdi-noce          #+#    #+#             */
-/*   Updated: 2022/03/31 16:26:57 by kdi-noce         ###   ########.fr       */
+/*   Updated: 2022/04/04 17:34:26 by kdi-noce         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,40 +35,37 @@ void	one_arg(t_data *global, int y)
 	tab = NULL;
 }
 
-void	three_args(t_data *global)
+void	three_args(t_data *global, int y)
 {
 	int	x;
 
 	x = 0;
+	if (global->len_a == 3)
+		global->max = check_max(global, x, y);
 	if (global->len_a == 2)
 	{
 		if (global->tab[0][0] > global->tab[0][1])
 			(ft_printf("sa\n"), manage_sa(global));
 	}
-	while (x < global->len_a && global->len_a == 3)
-	{
-		if (global->tab[0][0] > global->tab[0][1])
-			(ft_printf("ra\n"), manage_ra(global));
-		if (global->tab[0][0] > global->tab[0][1])
-			(ft_printf("sa\n"), manage_sa(global));
-		if (global->tab[0][1] > global->tab[0][2])
-			(ft_printf("sa\n"), manage_sa(global));
-		if (global->tab[0][0] < global->tab[0][1] &&
-			global->tab[0][1] < global->tab[0][2])
-			break ;
-		x++;
-	}
+	if (global->tab[0][0] == global->max)
+		(ft_printf("ra\n"), manage_ra(global));
+	else if (global->tab[0][1] == global->max)
+		(ft_printf("rra\n"), manage_rra(global));
+	if (global->tab[0][0] > global->tab[0][1])
+		(ft_printf("sa\n"), manage_sa(global));
 }
 
 void	for_args(t_data *global, int y, int x)
 {
 	int	max_b;
 	int	find_max;
+	int temp;
 
 	x = 0;
 	max_b = 0;
 	find_max = 0;
 	global->max = check_max(global, x, y);
+	temp = global->max;
 	while (x < global->len_a)
 	{
 		while (find_max < global->len_a)
@@ -81,23 +78,24 @@ void	for_args(t_data *global, int y, int x)
 		}
 		x++;
 	}
-	three_args(global);
-	if (global->tab[1][0] == global->max)
-		(ft_printf("pa\n"), manage_pa(global), ft_printf("ra\n"), manage_ra(global));
+	three_args(global, y);
+	if (global->tab[1][0] == temp)
+		(ft_printf("pa\n"), manage_pa(global),
+			ft_printf("ra\n"), manage_ra(global));
 }
 
 void	five_args(t_data *global, int y, int x)
 {
-	int	min_max_b;
 	int	find_min_max;
+	int temp;
 
 	find_min_max = -1;
 	global->min = check_min(global, x, y);
 	global->max = check_max(global, x, y);
-	while (++x < global->len_a)
+	temp = global->max;
+	while (++x <= global->len_a)
 	{
-		min_max_b = check_min_max_b(global, x);
-		while (++find_min_max < global->len_a && min_max_b == 0)
+		while (++find_min_max <= global->len_a)
 		{	
 			if (global->tab[0][0] == global->min)
 				(ft_printf("pb\n"), manage_pb(global));
@@ -107,8 +105,8 @@ void	five_args(t_data *global, int y, int x)
 				(ft_printf("ra\n"), manage_ra(global));
 		}
 	}
-	three_args(global);
-	manage_others_in_five_args(global);
+	three_args(global, y);
+	manage_others_in_five_args(global, temp);
 }
 
 //l'algo principal qui trie en fonction des bites de la valeur
