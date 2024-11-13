@@ -24,20 +24,16 @@ SRC		= 	push_swap.c 		\
 			check_valeurs.c		\
 			check_fcts_argv.c	\
 			check_fcts_tab.c
-#OBJ		= $(SRC:.c=.o)
-
-#%.o: %.c
-#	$(CC) $(CFLAG) -c $< -o $@
 	
 all: $(NAME)
 
 $(NAME): $(LIB) $(LIB2) $(SRC)
 		$(CC) $(CFLAG) $(SRC) $(LIB) $(LIB2) -o $(NAME)
 $(LIB): libft/
-		make -C libft
+		make -C libs/libft
 		
 $(LIB2): printf/
-		make -C printf
+		make -C libs/printf
 test:
 		cd push_swap_tester/ && bash tester.sh ../../push_swap 2 100
 		cd push_swap_tester/ && bash tester.sh ../../push_swap 3 100
