@@ -36,10 +36,8 @@ void	check_similaire(t_data *global)
 int	ordre_checker(t_data *global)
 {
 	int	x;
-	int	compt;
 
 	x = 0;
-	compt = 0;
 	while (x < global->len_a - 1)
 	{
 		if (global->tab[0][x] > global->tab[0][x + 1])

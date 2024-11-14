@@ -11,11 +11,11 @@
 # **************************************************************************** #
 
 NAME	= push_swap
-LIB		= libft/libft.a
-LIB2	= printf/libftprintf.a
 CC		= gcc
-CFLAG	= -Wall -Wextra -Werror -g3 -fsanitize=address
-SRC		= 	push_swap.c 		\
+CFLAG	= -Wall -Wextra -Werror #-g3 -fsanitize=address
+SRCDIR 	= srcs
+SRC		= 	$(SRCDIR)/main.c
+			# push_swap.c 		\
 			push_cmd.c 			\
 			push_cmd_in_r.c 	\
 			manage_tab.c 		\
@@ -24,10 +24,13 @@ SRC		= 	push_swap.c 		\
 			check_valeurs.c		\
 			check_fcts_argv.c	\
 			check_fcts_tab.c
-	
+
+LIB		= libs/libft/libft.a
+LIB2	= libs/printf/libftprintf.a
+
 all: $(NAME)
 
-$(NAME): $(LIB) $(LIB2) $(SRC)
+$(NAME): $(SRC)
 		$(CC) $(CFLAG) $(SRC) $(LIB) $(LIB2) -o $(NAME)
 $(LIB): libft/
 		make -C libs/libft

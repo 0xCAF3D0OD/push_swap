@@ -57,12 +57,10 @@ void	three_args(t_data *global, int y)
 
 void	for_args(t_data *global, int y, int x)
 {
-	int	max_b;
 	int	find_max;
 	int temp;
 
 	x = 0;
-	max_b = 0;
 	find_max = 0;
 	global->max = check_max(global, x, y);
 	temp = global->max;
@@ -112,14 +110,12 @@ void	five_args(t_data *global, int y, int x)
 //l'algo principal qui trie en fonction des bites de la valeur
 void	radix(t_data *global, int x)
 {
-	int	i;
 	int	len;
 	int	bit;
 
 	len = global->len_a;
 	bit = 0;
 	ft_firsttri(global);
-	i = check_after_bigger(global, len);
 	while (check_after_bigger(global, len) == 1)
 	{
 		x = 0;

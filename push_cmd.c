@@ -14,10 +14,8 @@
 
 void	manage_sa(t_data *global)
 {
-	int	x;
 	int	temp;
 
-	x = 0;
 	if (!(global->tab[0]))
 		ft_exit(global, 1);
 	temp = global->tab[0][0];

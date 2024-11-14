@@ -15,8 +15,8 @@
 
 # include <stdio.h>
 # include <unistd.h>
-# include "libft/libft.h"
-# include "printf/ft_printf.h"
+# include "libs/libft/srcs/libft.h"
+# include "libs/printf/srcs/ft_printf.h"
 # include <fcntl.h>
 
 # define MAX_INT 2147483647

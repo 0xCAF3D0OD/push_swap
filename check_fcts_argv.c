@@ -19,10 +19,8 @@ int	put_argv_in_tab(char *global, int *tab, int j)
 	char	**tab_tmp;
 	int		tmp;
 	int		i;
-	int		y;
 
 	i = 0;
-	y = 0;
 	tab_tmp = ft_split(global, ' ');
 	while (tab_tmp[i])
 	{

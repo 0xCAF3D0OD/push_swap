@@ -14,22 +14,36 @@ NAME = libftprintf.a
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
 OPTION = -c
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
+OBJDIR = objs
+SRCDIR = srcs
+SRC = $(wildcard $(SRCDIR)/*.c)
+#SRC = $(SRCDIR)/ft_split.c
+OBJ = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-.c.o : ${CC} ${FLAGS} -c $< -o ${<:.c=.0}
-
+# Règle par défaut pour créer la bibliothèque
 all: $(NAME)
 
-$(NAME):	$(OBJ)
-	ar rc $(NAME) $(OBJ)
+# Crée le répertoire des objets si nécessaire
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
+# Règle pour compiler les fichiers .c en .o
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJ)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
+# Nettoyage des fichiers objets
 clean:
 	/bin/rm -f $(OBJ)
+
+# Nettoyage complet, y compris la bibliothèque
 fclean: clean
 	/bin/rm -f $(NAME)
-	
 
+# Recompilation complète
 re: fclean all
 
 .PHONY: clean fclean re all

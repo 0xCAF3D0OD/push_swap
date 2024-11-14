@@ -15,12 +15,10 @@
 void	manage_ra(t_data *global)
 {
 	int	x;
-	int	y;
 	int	temp;
 
 	temp = 0;
 	x = 0;
-	y = 0;
 	if (!(global->tab[0]))
 		ft_exit(global, 1);
 	while (x < global->len_a)
